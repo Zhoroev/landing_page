@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+{% block content %}
+<h3>Карточка сотрудников:</h3>
+    {% for blog in blogs %}
+<div class="container">
+  <div class="row">
+    <div class="col-6 col-sm-4">ФИО</div>
+    <div class="col-6 col-sm-4">{{blog.first_name}} {{ blog.last_name }}</div>
+    <div class="w-100 d-none d-md-block"></div>
+
+    <div class="col-6 col-sm-4">Роль</div>
+    <div class="col-6 col-sm-4">{{blog.position}}</div>
+      <div class="w-100 d-none d-md-block"></div>
+
+      <div class="col-6 col-sm-4">Номер телефона</div>
+    <div class="col-6 col-sm-4">{{blog.phone}}</div>
+<div class="w-100 d-none d-md-block"></div>
+
+            <div class="col-6 col-sm-4">Дата рождения:</div>
+    <div class="col-6 col-sm-4">{{blog.birthdate}}</div>
+      <div class="w-100 d-none d-md-block">---------------------------------------</div>
+  </div>
+</div>
+    {% endfor %}
+<form action="." method="POST">
+        {{ question_form.as_p }}
+        {% csrf_token%}
+        <button type="submit">Send</button>
+    </form>
+{% endblock %}

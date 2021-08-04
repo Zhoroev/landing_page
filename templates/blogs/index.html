@@ -25,9 +25,12 @@
   </div>
 </div>
     {% endfor %}
-<form action="." method="POST">
+<form action="." method="post">
         {{ question_form.as_p }}
-        {% csrf_token%}
-        <button type="submit">Send</button>
+        {%csrf_token%}
+        <p><input type="submit" value="Send"></p>
     </form>
+    {% for i in bound_form%}
+    <div class="col-6 col-sm-4">{{i.contact}}</div>
+    {% endfor %}
 {% endblock %}

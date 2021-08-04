@@ -7,8 +7,12 @@ from questions.forms import QuestionForm
 def blogs_list_view(request):
     blogs = Blog.objects.all()
     bound_form = QuestionForm(request.POST)
+    if bound_form.is_valid():
+        bound_form.save()
     return render(request, 'blogs/index.html', context={'blogs': blogs,
                                                         'question_form': bound_form})
+
+
 
 
 
